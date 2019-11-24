@@ -116,7 +116,7 @@ async function repo(args) {
   let cwd = process.cwd()
   let src = path.resolve(cwd, args.src || cwd)
   let dest = path.resolve(cwd, args.dest || './dist')
-  let url = args.url || '.'
+  let url = args.url || ''
 
   deleteFolderRecursive(dest)
   let promises = fs.readdirSync(src)
@@ -153,7 +153,7 @@ async function repo(args) {
         author: manifest.author,
         size: getFilesizeInBytes(tarballPath),
         url: `${url}/${path.relative(dest, tarballPath)}`,
-        icon: manifest.icon ? `${url}/${path.relative(dest, iconPath)}` : null
+        icon: manifest.icon ? `${url}${path.relative(dest, iconPath)}` : null
       }
     });
 
