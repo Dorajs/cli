@@ -152,7 +152,7 @@ async function repo(args) {
         version: manifest.version,
         author: manifest.author,
         size: getFilesizeInBytes(tarballPath),
-        url: `${url}/${path.relative(dest, tarballPath)}`,
+        url: `${url}${path.relative(dest, tarballPath)}`,
         icon: manifest.icon ? `${url}${path.relative(dest, iconPath)}` : null
       }
     });
