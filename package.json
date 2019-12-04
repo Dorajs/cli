@@ -1,6 +1,6 @@
 {
   "name": "@dora-app/cli",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Command line tool for building Dora addon",
   "main": "index.js",
   "repository": "https://github.coom/linroid/dora-cli.git",
