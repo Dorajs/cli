@@ -59,6 +59,7 @@ async function pack(args) {
   let cwd = process.cwd()
   let src = path.resolve(cwd, args.src || cwd)
   let manifest = await readManifest(src)
+  console.log(manifest)
   if (!manifest.uuid) {
     throw Error('Must special uuid in package.json')
   }
@@ -157,10 +158,18 @@ async function repo(args) {
       }
     });
 
-  return Promise.all(promises).then(function(all) {
-    console.log(all)
-    let json = JSON.stringify(all, null, '    ')
-    const manifestFile = path.resolve(dest, `index.json`)
-    fs.writeFileSync(manifestFile, json)
-  })
+  let addons = await Promise.all(promises);
+  let repoManifest = await readManifest(src)
+  let data = {
+    displayName: repoManifest.displayName,
+    description: repoManifest.description,
+    author: repoManifest.author,
+    repository: repoManifest.repository,
+    version: repoManifest.version,
+    license: repoManifest.license,
+    addons: addons
+  }
+  let json = JSON.stringify(data, null, '    ')
+  const manifestFile = path.resolve(dest, `index.json`)
+  fs.writeFileSync(manifestFile, json)
 }
