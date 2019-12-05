@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "Command line tool for building Dora addon",
   "main": "index.js",
-  "repository": "https://github.coom/linroid/dora-cli.git",
+  "repository": "https://github.coom/DoraKit/cli.git",
   "author": "linroid",
   "license": "MIT",
   "bin": {
